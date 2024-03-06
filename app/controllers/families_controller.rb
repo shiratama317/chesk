@@ -1,4 +1,4 @@
 class FamiliesController < ApplicationController
-  def index
+  def show
   end
 end
