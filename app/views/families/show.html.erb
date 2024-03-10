@@ -1,1 +1,79 @@
-<p>ホーム画面</p>
+<%= render "share/header" %>
+<div class="my-4">
+  <h1 class="text-center">
+  <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+  ホーム</h1>
+</div>
+<div class="home-index rounded-5 p-3 p-md-5 mx-3 mx-md-5 mb-5">
+  <div class="home-user-name p-2 ps-4">ユーザー名</div>
+  <div class="row row-cols-2 row-cols-sm-3 g-6 ">
+    <div class="col m-0">
+      <div class="card border-0 m-1">
+        <a href="#" class="btn text-dark">
+        <%= image_tag "share-icon", alt: "...", class: "card-img rounded-5" %>
+        <div class="text-contents">
+          <h5 class="text-title p-1 text-nowrap">分担表</h5>
+          <p class="text-sub d-none d-xl-block">一週間の分担表</p>
+        </div>
+        </a>
+      </div>
+    </div>
+    <div class="col m-0">
+      <div class="card border-0 m-1">
+        <a href="#" class="btn text-dark">
+        <%= image_tag "today-icon", alt: "...", class: "card-img rounded-5" %>
+        <div class="text-contents">
+          <h5 class="text-title p-1 text-nowrap">マイタスク</h5>
+          <p class="text-sub d-none d-xl-block">一日の自分のタスク</p>
+        </div>
+        </a>
+      </div>
+    </div>
+    <div class="col m-0">
+      <div class="card border-0 m-1">
+        <a href="#" class="btn text-dark">
+        <%= image_tag "task-icon", alt: "...", class: "card-img rounded-5" %>
+        <div class="text-contents">
+          <h5 class="text-title p-1 text-nowrap">タスク管理</h5>
+          <p class="text-sub d-none d-xl-block">タスクの新規作成・一覧・詳細・編集</p>
+        </div>
+        </a>
+      </div>
+    </div>
+    <div class="col m-0">
+      <div class="card border-0 m-1">
+        <a href="#" class="btn text-dark">
+        <%= image_tag "calender-icon", alt: "...", class: "card-img rounded-5" %>
+        <div class="text-contents">
+          <h5 class="text-title p-1 text-nowrap">カレンダー</h5>
+          <p class="text-sub d-none d-xl-block">月カレンダー、予定の確認・追加</p>
+        </div>
+        </a>
+      </div>
+    </div>
+    <div class="col m-0">
+      <div class="card border-0 m-1">
+        <a href="#" class="btn text-dark">
+        <%= image_tag "user-icon", alt: "...", class: "card-img rounded-5" %>
+        <div class="text-contents">
+          <h5 class="text-title p-1 text-nowrap">プロフィール</h5>
+          <p class="text-sub d-none d-xl-block">自分の登録内容・編集</p>
+        </div>
+        </a>
+      </div>
+    </div>
+    <div class="col m-0">
+      <div class="card border-0 m-1">
+        <a href="#" class="btn text-dark">
+        <%= image_tag "myfamily-icon", alt: "...", class: "card-img rounded-5" %>
+        <div class="text-contents">
+          <h5 class="text-title p-1 text-nowrap">マイファミリー</h5>
+          <p class="text-sub d-none d-xl-block">ファミリー名の変更・メンバーの追加</p>
+        </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render "share/footer" %>
