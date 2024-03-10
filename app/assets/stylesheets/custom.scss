@@ -1,0 +1,61 @@
+/*ヘッダー*/
+.header-custom {
+  background-color: rgb(186, 227, 205);
+}
+
+.btn-color {
+  color: #619a88;
+  background: rgb(175, 219, 195);
+  border: 1px solid rgb(202, 232, 215);
+}
+
+.logout-color {
+  background: rgb(175, 219, 195);
+  text-decoration: none;
+  color: #619a88;
+  font-weight: bold;
+  border: 1px solid rgb(202, 232, 215);
+}
+
+/*フッターナビ*/
+.navbar-custom {
+  background-image: url('navbar-image.png');
+  background-size: auto 60%;
+  background-color: rgb(186, 227, 205);
+  background-repeat: repeat-x;
+  background-position: bottom;
+  /*background-blend-mode: soft-light;*/
+}
+
+.nav-list {
+  padding: 1px 6px;
+  background-color: rgba(248, 244, 244, 0.445);
+  border-radius: 12px;
+  box-shadow: 0 0 5px 3px rgba(186, 227, 205, 0.765)inset;
+}
+
+.nav-color { 
+  text-decoration: none;
+  color: #619a88;
+  font-weight: bold;
+}
+
+/*ボディー*/
+body {
+  background: #ebe6d2;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+
+/*ホーム*/
+.home-index {
+  background-color: white;
+}
+
+.home-user-name {
+  color: gray;
+}
+
+.text-title {
+  font-size: 3vmin;
+}
