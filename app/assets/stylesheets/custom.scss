@@ -3,13 +3,7 @@
   background-color: rgb(186, 227, 205);
 }
 
-.btn-color {
-  color: #619a88;
-  background: rgb(175, 219, 195);
-  border: 1px solid rgb(202, 232, 215);
-}
-
-.logout-color {
+.header-btn {
   background: rgb(175, 219, 195);
   text-decoration: none;
   color: #619a88;
@@ -40,6 +34,11 @@
   font-weight: bold;
 }
 
+/*エラーメッセージ*/
+.error-message {
+  color: rgb(182, 48, 0);
+}
+
 /*ボディー*/
 body {
   background: #ebe6d2;
@@ -48,7 +47,7 @@ body {
 
 
 /*ホーム*/
-.home-index {
+.main-index {
   background-color: white;
 }
 
@@ -58,4 +57,9 @@ body {
 
 .text-title {
   font-size: 3vmin;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
 }

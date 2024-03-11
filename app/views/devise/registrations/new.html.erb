@@ -1,0 +1,31 @@
+<%= render "share/header" %>
+
+<div class="d-flex flex-grow-1 align-items-center">
+  <main class="form-signin main-index w-100 m-auto rounded-5 p-5">
+    <%= form_with model: @user, url: user_registration_path, class: 'registration-form text-center', local: true do |f| %>
+      <%= image_tag "logo.png", size: '150x40' %>
+      <h4 class="my-3 text-nowrap fw-normal">サインアップして下さい</h4>
+
+      <%= render 'share/error_messages', model: f.object %>
+
+      <div class="form-floating">
+        <%= f.text_field :nickname, class:"form-control mb-1", id:"floatingNickname", maxlength:"8" %>
+        <label for="floatingNickname">ニックネーム（８文字以内）</label>
+      </div>
+      <div class="form-floating">
+        <%= f.email_field :email, class:"form-control mb-1", id:"floatingInput" %>
+        <label for="floatingInput">Emailアドレス</label>
+      </div>
+      <div class="form-floating">
+        <%= f.password_field :password, class:"form-control mb-1", id:"floatingPassword" %>
+        <label for="floatingPassword">パスワード</label>
+      </div>
+      <div class="form-floating">
+        <%= f.password_field :password_confirmation, class:"form-control mb-1", id:"floatingPasswordConfirmation" %>
+        <label for="floatingPasswordConfirmation">パスワード確認用</label>
+      </div>
+
+      <button class="btn btn-primary w-100 py-2 mt-3" type="submit">サインアップ</button>
+    <% end %>
+  </main>
+</div>
