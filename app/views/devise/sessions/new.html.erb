@@ -5,7 +5,7 @@
     <%= form_with model: @user, url: user_session_path, class: 'registration-form text-center', local: true do |f| %>
       <%= image_tag "logo.png", size: '150x40' %>
       <h4 class="my-3 text-nowrap fw-normal">サインインして下さい</h4>
-      
+
       <div class="form-floating">
         <%= f.email_field :email, class:"form-control mb-1", id:"floatingInput", placeholder:"Emailアドレス" %>
         <label for="floatingInput">Emailアドレス</label>
