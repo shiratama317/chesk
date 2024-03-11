@@ -1,7 +1,7 @@
 <%= render "share/header" %>
 
-<div class="d-flex flex-grow-1 align-items-center">
-  <main class="form-signin main-index w-100 m-auto rounded-5 p-5">
+<main class="d-flex flex-grow-1 align-items-center">
+  <div class="form-signin main-index w-100 m-auto rounded-5 p-5">
     <%= form_with model: @user, url: user_session_path, class: 'registration-form text-center', local: true do |f| %>
       <%= image_tag "logo.png", size: '150x40' %>
       <h4 class="my-3 text-nowrap fw-normal">サインインして下さい</h4>
@@ -24,5 +24,5 @@
       <button class="btn btn-primary w-100 py-2" type="submit">サインイン</button>
       ※未登録の方は登録ボタンへ
    <% end %>
-  </main>
-</div>
+  </div>
+</main>
