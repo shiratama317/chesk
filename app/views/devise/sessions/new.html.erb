@@ -2,16 +2,16 @@
 
 <div class="d-flex flex-grow-1 align-items-center">
   <main class="form-signin main-index w-100 m-auto rounded-5 p-5">
-    <form class="text-center">
+    <%= form_with model: @user, url: user_session_path, class: 'registration-form text-center', local: true do |f| %>
       <%= image_tag "logo.png", size: '150x40' %>
       <h4 class="my-3 text-nowrap fw-normal">サインインして下さい</h4>
       
       <div class="form-floating">
-        <input type="email" class="form-control mb-1" id="floatingInput" placeholder="Emailアドレス" name="email">
+        <%= f.email_field :email, class:"form-control mb-1", id:"floatingInput", placeholder:"Emailアドレス" %>
         <label for="floatingInput">Emailアドレス</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="パスワード" name="password">
+        <%= f.password_field :password, class:"form-control mb-1", id:"floatingPassword", placeholder:"パスワード" %>
         <label for="floatingPassword">パスワード</label>
       </div>
 
@@ -23,6 +23,6 @@
       </div>
       <button class="btn btn-primary w-100 py-2" type="submit">サインイン</button>
       ※未登録の方は登録ボタンへ
-   </form>
+   <% end %>
   </main>
 </div>
