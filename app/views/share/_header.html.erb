@@ -2,5 +2,9 @@
   <a href="/">
     <%= image_tag "logo.png",alt: "logo", size: '150x40', class:"d-inline-block align-center ps-1" %>
   </a>
-  <div class="btn nav-item"><a class="btn logout-color" href="#">ログアウト</a></div>
+  <% if user_signed_in? %>
+    <div class="btn nav-item"><a class="btn logout-color" href="#">ログアウト</a></div>
+  <% else %>
+    <div class="btn nav-item"><%= link_to "登録する", new_user_registration_path, class: "btn logout-color" %></div>
+  <% end %>
 </header>

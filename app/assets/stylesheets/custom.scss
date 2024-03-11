@@ -48,7 +48,7 @@ body {
 
 
 /*ホーム*/
-.home-index {
+.main-index {
   background-color: white;
 }
 
@@ -58,4 +58,9 @@ body {
 
 .text-title {
   font-size: 3vmin;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 1rem;
 }

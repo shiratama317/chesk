@@ -1,0 +1,29 @@
+<%= render "share/header" %>
+
+<div class="d-flex flex-grow-1 align-items-center">
+  <main class="form-signin main-index w-100 m-auto rounded-5 p-5">
+    <form class="text-center">
+      <%= image_tag "logo.png", size: '150x40' %>
+      <h4 class="my-3 text-nowrap fw-normal">サインアップして下さい</h4>
+      
+      <div class="form-floating">
+        <input type="text" class="form-control mb-1" id="floatingNickname" placeholder="ニックネーム" name="nickname">
+        <label for="floatingNickname">ニックネーム</label>
+      </div>
+      <div class="form-floating">
+        <input type="email" class="form-control mb-1" id="floatingInput" placeholder="Emailアドレス" name="email">
+        <label for="floatingInput">Emailアドレス</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control mb-1" id="floatingPassword" placeholder="パスワード" name="password">
+        <label for="floatingPassword">パスワード</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="floatingPasswordConfirmation" placeholder="パスワード確認用" name="password_confirmation">
+        <label for="floatingPasswordConfirmation">パスワード確認用</label>
+      </div>
+
+      <button class="btn btn-primary w-100 py-2 mt-3" type="submit">サインアップ</button>
+   </form>
+  </main>
+</div>
