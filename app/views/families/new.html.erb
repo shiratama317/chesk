@@ -1,0 +1,25 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 ">
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+      ファミリーの作成
+    </h1>
+  </div>
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-auto">
+    <div class="current-user-name"><%= current_user.nickname %></div>
+    <div class="fw-bold my-4">
+      <%= form_with model: @family, local: true do |f| %>
+        <%= render 'share/error_messages', model: f.object %>
+        <label class="fw-semibold ">
+          ファミリー名を入力してください
+          <%= f.text_field :name, class: "form-control w-100", placeholder:"15文字以内", maxlength:"15" %>
+        </label>
+        <div class="text-center mt-3"><%= f.submit '作成する', class: "btn link-btn w-100 p-2 fw-semibold" %></div>
+      <% end %>
+    </div>
+  </div>
+</main>
+
+<%= render "share/footer" %>
