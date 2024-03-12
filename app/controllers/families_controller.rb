@@ -11,6 +11,8 @@ class FamiliesController < ApplicationController
     @family.users << current_user
     if @family.save
       redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

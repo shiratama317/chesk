@@ -11,9 +11,9 @@
     <div class="current-user-name"><%= current_user.nickname %></div>
     <div class="fw-bold my-4">
       <%= form_with model: @family, local: true do |f| %>
-        <%= render 'share/error_messages', model: f.object %>
         <label class="fw-semibold ">
           ファミリー名を入力してください
+          <%= render 'share/error_messages', model: f.object %>
           <%= f.text_field :name, class: "form-control w-100", placeholder:"15文字以内", maxlength:"15" %>
         </label>
         <div class="text-center mt-3"><%= f.submit '作成する', class: "btn link-btn w-100 p-2 fw-semibold" %></div>
