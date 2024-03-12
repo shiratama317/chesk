@@ -1,0 +1,32 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 ">
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+      ファミリー情報
+    </h1>
+  </div>
+
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-auto">
+    <div class="current-user-name"><%= current_user.nickname %></div>
+    <div class="family-info mt-3">
+      <div class="family-name mb-3">
+        <h5>ファミリー名</h5>
+        <p class="text-center my-2"><%= @family.name %></p>
+        <%= link_to "変更", "#", class: "btn link-btn w-100 fw-semibold mx-2" %>
+      </div>
+      <div class="family-members">
+        <h5>メンバー</h5>
+        <% @members.each do |member| %>
+          <p class="text-center"><%= member.nickname %></p>
+        <% end %>
+        <div class="mt-3"><%= link_to "メンバーを招待する", new_user_invitation_path, class: "btn link-btn w-100 fw-semibold mx-2" %></div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<%= render "share/footer" %>
