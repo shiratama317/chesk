@@ -3,11 +3,10 @@
   background-color: rgb(186, 227, 205);
 }
 
-.header-btn {
+.link-btn {
   background: rgb(175, 219, 195);
   text-decoration: none;
   color: #619a88;
-  font-weight: bold;
   border: 1px solid rgb(202, 232, 215);
 }
 
@@ -18,7 +17,6 @@
   background-color: rgb(186, 227, 205);
   background-repeat: repeat-x;
   background-position: bottom;
-  /*background-blend-mode: soft-light;*/
 }
 
 .nav-list {
@@ -31,7 +29,6 @@
 .nav-color { 
   text-decoration: none;
   color: #619a88;
-  font-weight: bold;
 }
 
 /*エラーメッセージ*/
@@ -51,7 +48,7 @@ body {
   background-color: white;
 }
 
-.home-user-name {
+.current-user-name {
   color: gray;
 }
 
@@ -62,4 +59,11 @@ body {
 .form-signin {
   max-width: 330px;
   padding: 1rem;
+}
+
+/*ファミリー新規作成画面*/
+.submit-btn {
+  background: rgb(175, 219, 195);
+  color: #619a88;
+  border: 1px solid rgb(202, 232, 215);
 }

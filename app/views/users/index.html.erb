@@ -1,0 +1,25 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 ">
+  <div class="my-4">
+  <h1 class="text-center">
+    <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+    所属ファミリー
+  </h1>
+  </div>
+  <div class="main-index rounded-5 p-4 mx-auto mb-auto">
+    <div class="current-user-name mb-3"><%= current_user.nickname %></div>
+    <% if current_user.families.blank? %>
+      <h5 class="my-5">--- 所属ファミリーはありません ---</h5>
+    <% end %>
+    ---ファミリーを選択してください---
+    <div class="list-group my-3">
+      <% @families.each do |family| %>
+        <%= link_to family.name, top_family_path(family.id), class: "list-group-item list-group-item-action" %>
+      <% end %>
+    </div>
+    <div class="text-center"><%= link_to "ファミリーを作成する", new_family_path, class: "btn link-btn w-100 p-3 fw-bold" %></div>
+  </div>
+</main>
+
+<%= render "share/footer" %>

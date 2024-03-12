@@ -3,8 +3,8 @@
     <%= image_tag "logo.png",alt: "logo", size: '150x40', class:"d-inline-block align-center ps-1" %>
   </a>
   <% if user_signed_in? %>
-    <div class="btn nav-item"><%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn header-btn" %></div>
+    <div class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn link-btn fw-semibold" %></div>
   <% else %>
-    <div class="btn nav-item"><%= link_to "登録する", new_user_registration_path, class: "btn header-btn" %></div>
+    <div class="nav-item"><%= link_to "登録する", new_user_registration_path, class: "btn link-btn fw-semibold" %></div>
   <% end %>
 </header>
