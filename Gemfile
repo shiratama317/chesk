@@ -90,3 +90,5 @@ gem "mini_racer", "~> 0.8.0"
 gem 'jquery-rails'
 
 gem 'devise'
+
+gem 'devise_invitable'
