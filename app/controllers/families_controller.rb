@@ -1,5 +1,6 @@
 class FamiliesController < ApplicationController
   def top
+    @family = Family.find(params[:id])
   end
 
   def new
@@ -14,6 +15,11 @@ class FamiliesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @family = Family.find(params[:id])
+    @members = @family.users
   end
 
   private

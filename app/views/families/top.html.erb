@@ -64,13 +64,13 @@
     </div>
     <div class="col m-0">
       <div class="card border-0 m-1">
-        <a href="#" class="btn text-dark">
-        <%= image_tag "myfamily-icon", alt: "...", class: "card-img rounded-5" %>
-        <div class="text-contents">
-          <h5 class="text-title p-1 text-nowrap">マイファミリー</h5>
-          <p class="text-sub d-none d-xl-block">ファミリー名の変更・メンバーの追加</p>
+        <%= link_to family_path(@family.id), class: "btn text-dark" do %>
+          <%= image_tag "myfamily-icon", alt: "...", class: "card-img rounded-5" %>
+          <div class="text-contents">
+            <h5 class="text-title p-1 text-nowrap">ファミリー</h5>
+            <p class="text-sub d-none d-xl-block">ファミリー名の変更・メンバーの追加</p>
         </div>
-        </a>
+        <% end %>
       </div>
     </div>
   </div>

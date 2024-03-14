@@ -1,0 +1,43 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 ">
+  <% flash.each do |key, value| %>
+    <% unless key == 'notice' || key == 'alert' %>
+    <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+  <% end %>
+  
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+      メンバーの招待
+    </h1>
+  </div>
+
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-auto">
+    <div class="current-user-name mb-3"><%= current_user.nickname %></div>
+    <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <% resource.class.invite_key_fields.each do |field| -%>
+        <div class="field">
+          <%= f.label field %><br />
+          ※招待したいユーザーのメールアドレス<br />
+          <%= f.text_field field, class: "form-control" %><br />
+
+          <%= f.label :nickname, "ニックネーム（仮）"%><br />
+          ※アプリ未登録者を招待するときのみ<br />
+          <%= f.text_field :nickname, class: "form-control" %><br />
+          
+          <%= f.label :family_id, "ファミリー"%><br />
+          ※招待先（ファミリー名）を選択<br />
+          <%= f.select :family_id, current_user.families.map { |t| [t.name, t.id] }, {}, class: "form-select", include_blank: true %>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.submit "招待する", class: "btn submit-btn w-100 mt-4" %>
+      </div>
+    <% end %>
+  </div>
+</main>
