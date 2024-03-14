@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   has_many :family_users, dependent: :destroy
   has_many :families, through: :family_users
+
+  attr_accessor :family_id
 end
