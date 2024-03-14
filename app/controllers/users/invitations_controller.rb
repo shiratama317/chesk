@@ -17,14 +17,15 @@ class Users::InvitationsController < Devise::InvitationsController
         @family_user.save
         redirect_to new_user_invitation_path, success: "ファミリーに招待しました"
       end
-    elsif User.invite!(email: user_email, nickname: user_nickname ).valid?  # 新規ユーザーの処理
-      @family_user.user_id = User.find_by(email: user_email).id
+    elsif user_nickname.present?
+      new_user = User.invite!(email: user_email, nickname: user_nickname)  # 新規ユーザーの処理
+      @family_user.user_id = new_user.id
       @family_user.family_id = family_id
       @family_user.save
       redirect_to new_user_invitation_path, success: "招待メールが#{user_email}に送信されました。"
     else
-      flash.now[:danger] = 'メールアドレスを正しく入力してください。'
-      render :new, status: :unprocessable_entity
+      flash.now[:danger] = '招待に失敗しました'
+      return render :new, status: :unprocessable_entity
     end
   end
 end
