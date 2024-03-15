@@ -20,12 +20,12 @@ RSpec.describe Task, type: :model do
       it 'categoryが空では登録できない' do
         @task.category_id = 1
         @task.valid?
-        expect(@task.errors.full_messages).to include("Category を選択してください")
+        expect(@task.errors.full_messages).to include('Category を選択してください')
       end
       it 'familyが紐づいていなければ登録できない' do
         @task.family = nil
         @task.valid?
-        expect(@task.errors.full_messages).to include("Family must exist")
+        expect(@task.errors.full_messages).to include('Family must exist')
       end
     end
   end

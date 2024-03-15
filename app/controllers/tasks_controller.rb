@@ -15,6 +15,7 @@ class TasksController < ApplicationController
   end
 
   private
+
   def task_index
     @family = Family.find(params[:family_id])
     @tasks = @family.tasks
