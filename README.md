@@ -32,6 +32,7 @@ Things you may want to cover:
 - has_many :users, through: :family_users
 - has_many :tasks
 - has_many :schedules
+- has_many :day_tasks
 
 
 ## Usersテーブル
@@ -43,7 +44,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :families, through: :family_users
-- has_many :day_task
+- has_many :day_tasks
 - has_many :schedules
 
 ## FamilyUsersテーブル
@@ -73,10 +74,12 @@ Things you may want to cover:
 | action_day  | date       | null: false                    |
 | task_id     | references | null: false, foreign_key: true |
 | user_id     | references | null: false, foreign_key: true |
+| family_id   | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :task
 - belongs_to :user
+- belongs_to :family
 
 ## Schedulesテーブル
 | column      | Type       | Options                        |
