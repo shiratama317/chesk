@@ -20,17 +20,17 @@ RSpec.describe DayTask, type: :model do
       it 'task_idが紐づいていなければ、登録できない' do
         @day_task.task = nil
         @day_task.valid?
-        expect(@day_task.errors.full_messages).to include("Task must exist")
+        expect(@day_task.errors.full_messages).to include('Task must exist')
       end
       it 'user_idが紐づいていなければ、登録できない' do
         @day_task.user = nil
         @day_task.valid?
-        expect(@day_task.errors.full_messages).to include("User must exist")
+        expect(@day_task.errors.full_messages).to include('User must exist')
       end
       it 'family_idが紐づいていなければ、登録できない' do
         @day_task.family = nil
         @day_task.valid?
-        expect(@day_task.errors.full_messages).to include("Family must exist")
+        expect(@day_task.errors.full_messages).to include('Family must exist')
       end
     end
   end

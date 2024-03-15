@@ -1,6 +1,6 @@
 class DayTasksController < ApplicationController
   before_action :day_task_new, only: [:new, :create]
-  
+
   def new
     @day_task = DayTask.new
   end
@@ -15,6 +15,7 @@ class DayTasksController < ApplicationController
   end
 
   private
+
   def day_task_new
     @family = Family.find(params[:family_id])
     @tasks = @family.tasks
