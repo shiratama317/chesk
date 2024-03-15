@@ -22,6 +22,6 @@ class DayTasksController < ApplicationController
   end
 
   def day_task_params
-    params.require(:day_task).permit(:action_day, :task_id, :user_id)
+    params.require(:day_task).permit(:action_day, :task_id, :user_id).merge(family_id: params[:family_id])
   end
 end

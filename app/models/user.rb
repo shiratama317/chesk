@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :family_users, dependent: :destroy
   has_many :families, through: :family_users
-  has_many :day_tasks
+  has_many :day_tasks, dependent: :destroy
 
   attr_accessor :family_id
 end

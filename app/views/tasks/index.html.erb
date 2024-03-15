@@ -10,7 +10,11 @@
 
   <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
     <div class="current-user-name"><%= current_user.nickname %></div>
-    <%= link_to "+", new_family_day_task_path(params[:family_id]), class: "btn link-btn" %>
+    <%= link_to "+", new_family_day_task_path(params[:family_id]), class: "btn link-btn rounded-circle" %>
+
+    <% @day_tasks.each do |day_task| %>
+      <p><%= day_task.action_day %><%= day_task.task.content %><%= day_task.user.nickname %></p>
+    <% end %>
   </div>
 
 </main>
