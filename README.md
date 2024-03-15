@@ -43,7 +43,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :families, through: :family_users
-- has_many :day_task
+- has_many :day_tasks
 - has_many :schedules
 
 ## FamilyUsersテーブル
