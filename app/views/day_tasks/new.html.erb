@@ -1,0 +1,50 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 p-4">
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+    タスクを振り分ける
+    </h1>
+  </div>
+
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
+    <div class="current-user-name"><%= current_user.nickname %></div>
+
+    <div class="new-day-task-form p-2">
+      <%= form_with model: [@family, @day_task], local: true do |f| %>
+        <%= render 'share/error_messages', model: f.object %>
+
+          <label class="fw-semibold my-3 w-100">
+            実行日<br />
+            <%= raw sprintf(
+              f.date_select(
+                :action_day,
+                class: "form-control",
+                user_month_numbers: true,
+                prompt: '--',
+                start_year: Time.now.year,
+                end_year: (Time.now.year + 1),
+                date_separator: '%s'),
+              '年 ','月 ') + '日' %>
+          </label>
+
+          <label class="fw-semibold my-3 w-100">
+            タスク内容
+            <%= f.collection_select :task_id, @tasks, :id, :content, {}, {class: "form-select"} %>
+          </label>
+
+          <label class="fw-semibold my-3 w-100">
+            担当者
+            <%= f.collection_select :user_id, @users, :id, :nickname, {}, {class: "form-select"} %>
+          </label>
+
+        <p><%= f.submit '設定する', class: "btn link-btn w-100 p-2 fw-semibold" %></p>
+      <% end %>
+    </div>
+    
+  </div>
+
+</main>
+
+<%= render "share/footer" %>

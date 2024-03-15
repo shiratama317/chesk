@@ -11,13 +11,13 @@
     <div class="row row-cols-2 row-cols-sm-3 g-6 ">
       <div class="col m-0">
         <div class="card border-0 m-1">
-          <a href="#" class="btn text-dark">
-          <%= image_tag "share-icon.png", alt: "...", class: "card-img rounded-5" %>
-          <div class="text-contents">
-            <h5 class="text-title p-1 text-nowrap">分担表</h5>
-            <p class="text-sub d-none d-xl-block">一週間の分担表</p>
-          </div>
-          </a>
+          <%= link_to family_tasks_path(params[:id]), class: "btn text-dark" do %>
+            <%= image_tag "share-icon.png", alt: "...", class: "card-img rounded-5" %>
+            <div class="text-contents">
+              <h5 class="text-title p-1 text-nowrap">分担表</h5>
+              <p class="text-sub d-none d-xl-block">一週間の分担表</p>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="col m-0">
