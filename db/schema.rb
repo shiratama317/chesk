@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_15_085444) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_15_172203) do
   create_table "day_tasks", charset: "utf8", force: :cascade do |t|
-    t.date "action_day", null: false
+    t.date "start_time", null: false
     t.bigint "task_id", null: false
     t.bigint "user_id", null: false
     t.bigint "family_id", null: false
