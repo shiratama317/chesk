@@ -33,13 +33,13 @@
       </div>
       <div class="col m-0">
         <div class="card border-0 m-1">
-          <a href="#" class="btn text-dark">
-          <%= image_tag "task-icon.png", alt: "...", class: "card-img rounded-5" %>
-          <div class="text-contents">
-            <h5 class="text-title p-1 text-nowrap">タスク管理</h5>
-            <p class="text-sub d-none d-xl-block">タスクの新規作成・一覧・詳細・編集</p>
-          </div>
-          </a>
+          <%= link_to new_family_task_path(params[:id]), class: "btn text-dark" do %>
+            <%= image_tag "task-icon.png", alt: "...", class: "card-img rounded-5" %>
+            <div class="text-contents">
+              <h5 class="text-title p-1 text-nowrap">タスク管理</h5>
+              <p class="text-sub d-none d-xl-block">タスクの新規作成・一覧・詳細・編集</p>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="col m-0">

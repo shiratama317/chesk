@@ -2,7 +2,7 @@
 <nav class="navbar navbar-custom fixed-bottom border-top">
   <div class="nav nav-underline flex-grow-1 justify-content-around fw-semibold">
     <div class="nav-item nav-list">
-      <%= link_to "ホーム", top_family_path(params[:id]), class: "nav-link nav-color active" %>
+      <%= link_to "ホーム", top_family_path(@family.id), class: "nav-link nav-color active" %>
     </div>
     <div class="nav-item nav-list">
       <a class="nav-link nav-color" href="#">分担表</a>
