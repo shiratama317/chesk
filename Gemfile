@@ -94,3 +94,5 @@ gem 'devise'
 gem 'devise_invitable'
 
 gem 'active_hash'
+
+gem 'simple_calendar'
