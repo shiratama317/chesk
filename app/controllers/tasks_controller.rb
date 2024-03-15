@@ -1,9 +1,8 @@
 class TasksController < ApplicationController
+  before_action :task_index, only: [:new, :create]
+
   def new
-    @family = Family.find(params[:family_id])
     @task = Task.new
-    @tasks = @family.tasks
-    @categories = Category.all
   end
 
   def create
@@ -16,6 +15,11 @@ class TasksController < ApplicationController
   end
 
   private
+  def task_index
+    @family = Family.find(params[:family_id])
+    @tasks = @family.tasks
+    @categories = Category.all
+  end
 
   def task_params
     params.require(:task).permit(:content, :category_id).merge(family_id: params[:family_id])
