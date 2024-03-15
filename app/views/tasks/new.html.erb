@@ -1,0 +1,52 @@
+<%= render "share/header" %>
+<main class="d-flex flex-column flex-grow-1 p-4">
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+      タスク管理
+    </h1>
+  </div>
+
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
+    <div class="current-user-name"><%= current_user.nickname %></div>
+
+    <h4 class="text-center mt-2">タスクの一覧</h4>
+    <div class="task-index p-2 border border-success rounded-3">
+      <% if @tasks.present? %>
+        <% @categories.each do |category| %>
+          <% if @tasks.where(category_id: category.id).present? %>
+            <h5><%= category.name %></h5>
+            <div class="list-group list-group-horizontal-xl">
+                <% @tasks.where(category_id: category.id).each do |task| %>
+                  <%= link_to task.content, "#", class: "list-group-item" %>
+                <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p class="text-center">---タスクが作成されていません---</p>
+      <% end %>
+    </div>
+
+    <h4 class="text-center mt-4">タスクを作成する</h4>
+    <div class="new-task-form p-2 border border-success rounded-3">
+      <%= form_with model: [@family, @task], local: true do |f| %>
+        <%= render 'share/error_messages', model: f.object %>
+
+          <label class="fw-semibold my-3 w-100">
+            カテゴリーを選択してください
+            <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: "form-select"} %>
+          </label>
+
+          <label class="fw-semibold my-3 w-100">
+            タスク内容を入力してください
+            <%= f.text_field :content, class: "form-control" %>
+          </label>
+
+        <p><%= f.submit '作成する', class: "btn link-btn w-100 p-2 fw-semibold" %></p>
+      <% end %>
+    </div>
+  </div>
+</main>
+
+<%= render "share/footer" %>

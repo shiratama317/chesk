@@ -6,5 +6,8 @@ Rails.application.routes.draw do
     member do
       get 'top'
     end
+
+    resources :tasks, only: [:new, :create]
   end
+
 end

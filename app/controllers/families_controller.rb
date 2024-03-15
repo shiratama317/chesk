@@ -22,6 +22,9 @@ class FamiliesController < ApplicationController
     @members = @family.users
   end
 
+  def newtasks
+  end
+
   private
 
   def family_params

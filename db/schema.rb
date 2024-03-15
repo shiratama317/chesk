@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_12_065127) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_14_170746) do
   create_table "families", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_12_065127) do
     t.datetime "updated_at", null: false
     t.index ["family_id"], name: "index_family_users_on_family_id"
     t.index ["user_id"], name: "index_family_users_on_user_id"
+  end
+
+  create_table "tasks", charset: "utf8", force: :cascade do |t|
+    t.string "content", null: false
+    t.integer "category_id", null: false
+    t.bigint "family_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_tasks_on_family_id"
   end
 
   create_table "users", charset: "utf8", force: :cascade do |t|
@@ -52,4 +61,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_12_065127) do
 
   add_foreign_key "family_users", "families"
   add_foreign_key "family_users", "users"
+  add_foreign_key "tasks", "families"
 end

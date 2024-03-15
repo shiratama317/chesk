@@ -92,3 +92,5 @@ gem 'jquery-rails'
 gem 'devise'
 
 gem 'devise_invitable'
+
+gem 'active_hash'
