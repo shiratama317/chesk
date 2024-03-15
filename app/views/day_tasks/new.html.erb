@@ -10,6 +10,9 @@
 
   <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
     <div class="current-user-name"><%= current_user.nickname %></div>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
 
     <div class="new-day-task-form p-2">
       <%= form_with model: [@family, @day_task], local: true do |f| %>
@@ -17,16 +20,7 @@
 
           <label class="fw-semibold my-3 w-100">
             実行日<br />
-            <%= raw sprintf(
-              f.date_select(
-                :action_day,
-                class: "form-control",
-                user_month_numbers: true,
-                prompt: '--',
-                start_year: Time.now.year,
-                end_year: (Time.now.year + 1),
-                date_separator: '%s'),
-              '年 ','月 ') + '日' %>
+            <%= f.date_field :action_day, min: Time.zone.now, class: "border" %>
           </label>
 
           <label class="fw-semibold my-3 w-100">
