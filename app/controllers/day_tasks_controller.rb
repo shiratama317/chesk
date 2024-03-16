@@ -16,6 +16,16 @@ class DayTasksController < ApplicationController
 
   def index
     @family = Family.find(params[:family_id])
+    @day_tasks = DayTask.where(start_time: Date.today, user_id: current_user.id, family_id: @family.id)
+  end
+
+  def edit
+  end
+
+  def update
+    @family = Family.find(params[:family_id])
+    @day_task = @family.day_tasks.find(params[:id])
+    @day_task.update(day_task_params)
   end
 
   private
@@ -27,6 +37,6 @@ class DayTasksController < ApplicationController
   end
 
   def day_task_params
-    params.require(:day_task).permit(:start_time, :task_id, :user_id).merge(family_id: params[:family_id])
+    params.require(:day_task).permit(:start_time, :task_id, :user_id, :completed).merge(family_id: params[:family_id])
   end
 end

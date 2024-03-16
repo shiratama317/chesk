@@ -4,4 +4,5 @@ class DayTask < ApplicationRecord
   belongs_to :family
 
   validates :start_time, presence: true
+  validates :completed, inclusion: [true, false]
 end
