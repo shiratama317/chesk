@@ -22,13 +22,13 @@
       </div>
       <div class="col m-0">
         <div class="card border-0 m-1">
-          <a href="#" class="btn text-dark">
-          <%= image_tag "today-icon.png", alt: "...", class: "card-img rounded-5" %>
-          <div class="text-contents">
-            <h5 class="text-title p-1 text-nowrap">マイタスク</h5>
-            <p class="text-sub d-none d-xl-block">一日の自分のタスク</p>
-          </div>
-          </a>
+          <%= link_to family_day_tasks_path(params[:id]), class: "btn text-dark" do %>
+            <%= image_tag "today-icon.png", alt: "...", class: "card-img rounded-5" %>
+            <div class="text-contents">
+              <h5 class="text-title p-1 text-nowrap">マイタスク</h5>
+              <p class="text-sub d-none d-xl-block">一日の自分のタスク</p>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="col m-0">

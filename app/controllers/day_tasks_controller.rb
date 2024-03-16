@@ -14,6 +14,10 @@ class DayTasksController < ApplicationController
     end
   end
 
+  def index
+    @family = Family.find(params[:family_id])
+  end
+
   private
 
   def day_task_new
