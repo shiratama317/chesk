@@ -7,7 +7,11 @@
     </h1>
   </div>
   <div class="main-index rounded-5 p-3 p-md-5 mx-3 mx-md-5 mb-5">
-    <div class="current-user-name p-2 ps-4"><%= current_user.nickname %></div>
+    <div class="d-flex justify-content-between text-secondary">
+      <p><%= current_user.nickname %></p>
+      <p><%= Date.today.month %>月<%= Date.today.day %>日</p>
+    </div>
+
     <div class="row row-cols-2 row-cols-sm-3 g-6 ">
       <div class="col m-0">
         <div class="card border-0 m-1">
