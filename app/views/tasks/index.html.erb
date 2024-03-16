@@ -1,6 +1,6 @@
 <%= render "share/header" %>
 
-<main class="d-flex flex-column flex-grow-1 p-4">
+<main class="d-flex flex-column flex-grow-1 p-4 p-md-5">
   <div class="my-4">
     <h1 class="text-center">
       <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
@@ -8,15 +8,40 @@
     </h1>
   </div>
 
-  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
-    <div class="current-user-name"><%= current_user.nickname %></div>
-    <%= link_to "+", new_family_day_task_path(params[:family_id]), class: "btn link-btn rounded-circle" %>
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5 w-100 position-relative">
+    <div class="position-absolute end-0 bottom-0 p-3">
+      <%= link_to "+", new_family_day_task_path(params[:family_id]), class: "btn link-btn rounded-circle" %>
+    </div>
+    <div class="d-flex justify-content-between text-secondary">
+      <p><%= current_user.nickname %></p>
+      <p><%= Date.today.month %>月<%= Date.today.day %>日</p>
+    </div>
 
-    <% @day_tasks.each do |day_task| %>
-      <p><%= day_task.action_day %><%= day_task.task.content %><%= day_task.user.nickname %></p>
+    <%= week_calendar events: @day_tasks, class: "table table-bordered" do |date, day_tasks| %>
+      <% if date.saturday? %>
+        <div class="text-primary">
+          <%= date.day %>
+        </div>
+      <% elsif date.sunday? %>
+        <div class="text-danger">
+          <%= date.day %>
+        </div>
+      <% else %>
+        <div>
+          <%= date.day %>
+        </div>
+      <% end %>
+
+      <table class="table table-hover">
+        <% day_tasks.each do |day_task| %>
+          <tr class="text-nowrap">
+            <td><%= link_to day_task.task.content, "#", class: "text-decoration-none text-dark" %></td>
+            <td class="text-secondary"><%= day_task.user.nickname %></td>
+          </tr>
+        <% end %>
+      </table>
     <% end %>
   </div>
-
 </main>
 
 <%= render "share/footer" %>

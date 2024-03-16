@@ -13,9 +13,9 @@ RSpec.describe DayTask, type: :model do
     end
     context '新規登録できないとき' do
       it 'action_dayが空では登録できない' do
-        @day_task.action_day = ''
+        @day_task.start_time = ''
         @day_task.valid?
-        expect(@day_task.errors.full_messages).to include("Action day can't be blank")
+        expect(@day_task.errors.full_messages).to include("Start time can't be blank")
       end
       it 'task_idが紐づいていなければ、登録できない' do
         @day_task.task = nil

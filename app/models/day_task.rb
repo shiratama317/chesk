@@ -3,5 +3,5 @@ class DayTask < ApplicationRecord
   belongs_to :user
   belongs_to :family
 
-  validates :action_day, presence: true
+  validates :start_time, presence: true
 end
