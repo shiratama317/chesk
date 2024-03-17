@@ -1,0 +1,33 @@
+<%= render 'share/header' %>
+
+<main class="d-flex flex-column flex-grow-1 p-4">
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+    マイタスク
+    </h1>
+  </div>
+
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
+    <div class="d-flex justify-content-between text-secondary">
+      <p><%= current_user.nickname %></p>
+      <p><%= Date.today.month %>月<%= Date.today.day %>日</p>
+    </div>
+    
+    <div class="day-tasks p-2">
+      <h5 class="text-center border-top border-bottom border-primary-subtle">今日のマイタスク</h5>
+      <p class="text-center m-1">完了後はチェックしましょう</p>
+      <div class="p-1">
+      <% @day_tasks.each do |day_task| %>
+        <%= form_with model:[@family, day_task], remote: true, html: {class: "form-check"} do |f| %>
+          <%= f.check_box :completed, onchange: 'this.form.submit()', class: 'form-check-input' %>
+          <%= f.label :completed, day_task.task.content, class: 'form-check-label' %>
+        <% end %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<%= render 'share/footer' %>

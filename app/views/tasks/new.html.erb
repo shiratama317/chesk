@@ -15,8 +15,8 @@
       <% if @tasks.present? %>
         <% @categories.each do |category| %>
           <% if @tasks.where(category_id: category.id).present? %>
-            <h5><%= category.name %></h5>
-            <div class="list-group list-group-horizontal-xl">
+            <h5><i class="bi bi-stars text-info"></i><%= category.name %></h5>
+            <div class="list-group list-group-horizontal-xl my-2">
                 <% @tasks.where(category_id: category.id).each do |task| %>
                   <%= link_to task.content, "#", class: "list-group-item" %>
                 <% end %>

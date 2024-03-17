@@ -8,7 +8,6 @@ Rails.application.routes.draw do
     end
     
     resources :tasks, only: [:new, :create, :index]
-    resources :day_tasks, only: [:new, :create]
+    resources :day_tasks, only: [:new, :create, :index, :edit, :update]
   end
-
 end

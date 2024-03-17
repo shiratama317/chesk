@@ -10,7 +10,9 @@
 
   <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5 w-100 position-relative">
     <div class="position-absolute end-0 bottom-0 p-3">
-      <%= link_to "+", new_family_day_task_path(params[:family_id]), class: "btn link-btn rounded-circle" %>
+      <%= link_to new_family_day_task_path(params[:family_id]), class: "btn"  do %>
+      <i class="bi bi-plus-circle-fill h1 text-primary"></i>
+      <% end %>
     </div>
     <div class="d-flex justify-content-between text-secondary">
       <p><%= current_user.nickname %></p>
@@ -35,6 +37,11 @@
       <table class="table table-hover">
         <% day_tasks.each do |day_task| %>
           <tr class="text-nowrap">
+            <% if day_task.completed %>
+            <td><i class='bi bi-patch-check-fill text-success'></i></td>
+            <% else %>
+            <td><i class="bi bi-circle"></i></td>
+            <% end %>
             <td><%= link_to day_task.task.content, "#", class: "text-decoration-none text-dark" %></td>
             <td class="text-secondary"><%= day_task.user.nickname %></td>
           </tr>

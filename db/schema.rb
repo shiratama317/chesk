@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_15_172203) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_16_155414) do
   create_table "day_tasks", charset: "utf8", force: :cascade do |t|
     t.date "start_time", null: false
     t.bigint "task_id", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_15_172203) do
     t.bigint "family_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "completed", default: false, null: false
     t.index ["family_id"], name: "index_day_tasks_on_family_id"
     t.index ["task_id"], name: "index_day_tasks_on_task_id"
     t.index ["user_id"], name: "index_day_tasks_on_user_id"
