@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :task_index, only: [:new, :create]
+  before_action :task_update, only: [:edit, :update]
 
   def new
     @task = Task.new
@@ -19,7 +20,24 @@ class TasksController < ApplicationController
     @day_tasks = @family.day_tasks
   end
 
+  def edit
+  end
+
+  def update
+    if @task.update(task_params)
+      redirect_to new_family_task_path(@family.id), success: "変更しました"
+    else
+      flash.now[:danger] = "変更できませんでした"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
+
+  def task_update
+    @task = Task.find(params[:id])
+    @family = @task.family
+  end
 
   def task_index
     @family = Family.find(params[:family_id])
@@ -28,6 +46,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:content, :category_id).merge(family_id: params[:family_id])
+    params.require(:task).permit(:content, :category_id).merge(family_id: @family.id)
   end
 end
