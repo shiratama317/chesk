@@ -74,7 +74,7 @@ Rails.application.configure do
    password:             Rails.application.credentials.mailer[:password],
    authentication:       'plain',
    enable_starttls_auto:  true,
-   open_timeout:          30
+   open_timeout:          40
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
