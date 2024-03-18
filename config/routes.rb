@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { invitations: 'users/invitations' }
-  root to: 'users#index'
-  resources :users, only: :index
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    invitations: 'users/invitations'
+  }
+  root to: 'users#show'
   resources :families do
     member do
       get 'top'

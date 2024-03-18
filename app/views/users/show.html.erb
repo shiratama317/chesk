@@ -1,0 +1,43 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 p-4">
+  <div class="my-4">
+  <h1 class="text-center">
+    <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+    マイページ
+  </h1>
+  </div>
+  <div class="main-index rounded-5 p-4 mx-auto mb-auto">
+    <p class="text-secondary text-end"><%= Date.today.month %>月<%= Date.today.day %>日</p>
+    <div class="border rounded-4 p-3 mb-3">
+      <h5 class="text-center mb-3"><i class="bi bi-person-circle text-secondary me-1"></i>プロフィール</h5>
+      <div class="d-flex">
+        <p class="me-4">ニックネーム</p>
+        <p><%= current_user.nickname %></p>
+      </div>
+      <div class="d-flex">
+        <p class="me-2">メールアドレス</p>
+        <p><%= current_user.email %></p>
+      </div>
+
+      <div class="text-center"><%= link_to "登録内容を変更", edit_user_registration_path, class: "btn link-btn w-100 fw-bold" %></div>
+      <div class="text-center"><%= link_to "退会", "#", class: "btn link-btn w-100 fw-bold mt-1" %></div>
+    </div>
+
+    <div class="border rounded-4 p-3">
+      <h5 class="text-center"><i class="bi bi-door-open text-secondary me-1"></i>ファミリーへ移動</h5>
+      <% if current_user.families.blank? %>
+        <h5 class="my-5">--- 所属ファミリーはありません ---</h5>
+      <% else %>
+        ---ファミリーを選択してください---
+        <div class="list-group my-3">
+          <% @families.each do |family| %>
+          <%= link_to family.name, top_family_path(family.id), class: "list-group-item list-group-item-action" %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="text-center"><%= link_to "ファミリーを作成する", new_family_path, class: "btn link-btn w-100 p-2 fw-bold" %></div>
+    </div>
+    
+  </div>
+</main>

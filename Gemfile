@@ -96,3 +96,6 @@ gem 'devise_invitable'
 gem 'active_hash'
 
 gem 'simple_calendar'
+
+gem 'devise-i18n'
+gem 'rails-i18n'

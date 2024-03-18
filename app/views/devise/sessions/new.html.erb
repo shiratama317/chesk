@@ -2,9 +2,9 @@
 
 <main class="d-flex flex-grow-1 align-items-center">
   <div class="form-signin main-index w-100 m-auto rounded-5 p-5">
-    <%= form_with model: @user, url: user_session_path, class: 'registration-form text-center', local: true do |f| %>
+    <%= form_with model: @user, url: user_session_path, class: 'registration-form text-center text-nowrap', local: true do |f| %>
       <%= image_tag "logo.png", size: '150x40' %>
-      <h4 class="my-3 text-nowrap fw-normal">サインインして下さい</h4>
+      <h4 class="my-3 fw-normal">サインインして下さい</h4>
 
       <div class="form-floating">
         <%= f.email_field :email, class:"form-control mb-1", id:"floatingInput", placeholder:"Emailアドレス" %>
@@ -21,8 +21,11 @@
           状態を記憶する
         </label>
       </div>
-      <button class="btn btn-primary w-100 py-2" type="submit">サインイン</button>
-      ※未登録の方は登録ボタンへ
+      <div class="text-start">
+        <button class="btn btn-primary w-100 py-2" type="submit">サインイン</button><br />
+        ※未登録の方は登録ボタンへ<br />
+        ※パスワードを忘れた方は<%= link_to "こちら", new_user_password_path %>へ
+      </div>
    <% end %>
   </div>
 </main>

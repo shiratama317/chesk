@@ -26,7 +26,7 @@ ja:
         password_confirmation: "確認用パスワード"
         remember_me: "次回から自動的にログイン"
     models:
-      user: "ユーザ"
+      user: "ユーザー"
   devise:
     confirmations:
       new:
@@ -39,8 +39,8 @@ ja:
       reset_password_instructions:
         action: "パスワード変更"
         greeting: "こんにちは、%{recipient}さん!"
-        instruction: "誰かがパスワードの再設定を希望しました。次のリンクでパスワードの再設定が出来ます。"
-        instruction_2: "あなたが希望したのではないのなら、このメールは無視してください。"
+        instruction: "パスワード再設定の依頼を受けたため、メールを送信しています。次のリンクでパスワードの再設定が出来ます。"
+        instruction_2: "パスワード再設定の依頼をしていない場合、このメールは無視してください。"
         instruction_3: "上のリンクにアクセスして新しいパスワードを設定するまで、パスワードは変更されません。"
       unlock_instructions:
         action: "アカウントのロック解除"
