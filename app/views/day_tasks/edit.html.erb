@@ -38,6 +38,8 @@
             完了状況
           </label>
 
+          <%= f.hidden_field :origin, value: "edit" %>
+
         <p><%= f.submit '変更する', class: "btn link-btn w-100 p-2 fw-semibold" %></p>
       <% end %>
       <%= link_to '戻る', day_task_path(@day_task.id), class: "btn link-btn w-100 p-2 fw-semibold" %>

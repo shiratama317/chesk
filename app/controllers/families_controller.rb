@@ -27,7 +27,7 @@ class FamiliesController < ApplicationController
 
   def update
     if @family.update(family_params)
-      redirect_to family_path(params[:id]), success: "ファミリー名を変更しました"
+      redirect_to edit_family_path(params[:id]), success: "ファミリー名を変更しました"
     else
       flash.now[:danger] = "変更できませんでした"
       render :edit, status: :unprocessable_entity

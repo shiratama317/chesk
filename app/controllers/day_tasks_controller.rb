@@ -31,11 +31,18 @@ class DayTasksController < ApplicationController
   end
 
   def update
-    if @day_task.update(day_task_params)
-      flash[:success] = "変更しました"
+    if params[:day_task][:origin] == "edit"
+      if @day_task.update(day_task_params)
+        redirect_to day_task_path(@day_task.id), success: "変更しました"
+      else
+        flash.now[:danger] = "変更できませんでした"
+        render :edit, status: :unprocessable_entity
+      end
     else
-      flash[:danger] = "変更できませんでした"
-      redirect_back(fallback_location: root_path)
+      unless @day_task.update(day_task_params)
+        flash[:danger] = "変更できませんでした"
+        redirect_back(fallback_location: root_path)
+      end
     end
   end
 
@@ -52,6 +59,6 @@ class DayTasksController < ApplicationController
   end
 
   def day_task_params
-    params.require(:day_task).permit(:start_time, :task_id, :user_id, :completed).merge(family_id: params[:family_id])
+    params.require(:day_task).permit(:start_time, :task_id, :user_id, :completed, :origin).merge(family_id: params[:family_id])
   end
 end
