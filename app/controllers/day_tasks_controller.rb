@@ -46,6 +46,13 @@ class DayTasksController < ApplicationController
     end
   end
 
+  def destroy
+    day_task = DayTask.find(params[:id])
+    family = day_task.family
+    day_task.destroy
+    redirect_to family_tasks_path(family.id)
+  end
+
   private
   def day_task_update
     @family = Family.find(params[:family_id])
