@@ -1,0 +1,48 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 p-4">
+  <%= render "share/flash_messages" %>
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+    タスクの詳細
+    </h1>
+  </div>
+
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
+    <div class="d-flex justify-content-between text-secondary">
+      <p><%= current_user.nickname %></p>
+      <p><%= Date.today&.strftime("%-m月%-d日") %></p>
+    </div>
+
+    <div class="text-center p-4">
+      <h5>カテゴリー</h5>
+      <p class="mb-4"><%= @category.name %></p>
+
+      <h5>タスク内容</h5>
+      <p class="mb-4"><%= @task.content %></p>
+
+      <h5>実行日</h5>
+      <p class="mb-4"><%= @day_task.start_time&.strftime("%Y年 %-m月 %-d日") %></p>
+
+      <h5>担当者</h5>
+      <p class="mb-4"><%= @day_task.user.nickname %></p>
+
+      <h5>完了状況</h5>
+      <p>
+      <% if @day_task.completed %>
+        完了済み
+      <% else %>
+        未完了
+      <% end %>
+      </p>
+      
+      <div class="w-100">
+        <%= link_to "変更", edit_family_day_task_path(@family.id, @day_task.id), class: "btn link-btn" %>
+        <%= link_to "削除", "#", class: "btn link-btn" %>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%= render "share/footer" %>

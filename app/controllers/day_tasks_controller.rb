@@ -1,5 +1,6 @@
 class DayTasksController < ApplicationController
   before_action :day_task_new, only: [:new, :create]
+  before_action :day_task_update, only: [:edit, :update]
 
   def new
     @day_task = DayTask.new
@@ -19,16 +20,30 @@ class DayTasksController < ApplicationController
     @day_tasks = DayTask.where(start_time: Date.today, user_id: current_user.id, family_id: @family.id)
   end
 
+  def show
+    @day_task = DayTask.find(params[:id])
+    @family = @day_task.family
+    @task = @day_task.task
+    @category = @task.category
+  end
+
   def edit
   end
 
   def update
-    @family = Family.find(params[:family_id])
-    @day_task = @family.day_tasks.find(params[:id])
-    @day_task.update(day_task_params)
+    if @day_task.update(day_task_params)
+      flash[:success] = "変更しました"
+    else
+      flash[:danger] = "変更できませんでした"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
+  def day_task_update
+    @family = Family.find(params[:family_id])
+    @day_task = DayTask.find(params[:id])
+  end
 
   def day_task_new
     @family = Family.find(params[:family_id])

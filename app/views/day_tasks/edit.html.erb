@@ -1,10 +1,11 @@
 <%= render "share/header" %>
 
 <main class="d-flex flex-column flex-grow-1 p-4">
+  <%= render "share/flash_messages" %>
   <div class="my-4">
     <h1 class="text-center">
       <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
-    タスクを振り分ける
+    タスクの編集
     </h1>
   </div>
 
@@ -13,10 +14,9 @@
       <p><%= current_user.nickname %></p>
       <p><%= Date.today&.strftime("%-m月%-d日") %></p>
     </div>
-    
+
     <div class="new-day-task-form p-2">
       <%= form_with model: [@family, @day_task], local: true do |f| %>
-        <%= render 'share/error_messages', model: f.object %>
 
           <label class="fw-semibold my-3 w-100">
             実行日<br />
@@ -25,16 +25,22 @@
 
           <label class="fw-semibold my-3 w-100">
             タスク内容
-            <%= f.collection_select :task_id, @tasks, :id, :content, {}, {class: "form-select"} %>
+            <%= f.collection_select :task_id, @family.tasks, :id, :content, {}, {class: "form-select"} %>
           </label>
 
           <label class="fw-semibold my-3 w-100">
             担当者
-            <%= f.collection_select :user_id, @users, :id, :nickname, {}, {class: "form-select"} %>
+            <%= f.collection_select :user_id, @family.users, :id, :nickname, {}, {class: "form-select"} %>
           </label>
 
-        <p><%= f.submit '設定する', class: "btn link-btn w-100 p-2 fw-semibold" %></p>
+          <label class="fw-semibold my-3 w-100">
+            <%= f.check_box :completed  %>
+            完了状況
+          </label>
+
+        <p><%= f.submit '変更する', class: "btn link-btn w-100 p-2 fw-semibold" %></p>
       <% end %>
+      <%= link_to '戻る', day_task_path(@day_task.id), class: "btn link-btn w-100 p-2 fw-semibold" %>
     </div>
     
   </div>
