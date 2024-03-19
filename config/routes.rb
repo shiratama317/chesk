@@ -9,6 +9,10 @@ Rails.application.routes.draw do
       get 'top'
     end
     
+    member do
+      delete 'withdraw'
+    end
+    
     resources :tasks, only: [:new, :create, :index]
     resources :day_tasks, only: [:new, :create, :index, :edit, :update]
   end

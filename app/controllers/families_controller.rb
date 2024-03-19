@@ -34,6 +34,25 @@ class FamiliesController < ApplicationController
     end
   end
 
+  def destroy
+    family = Family.find(params[:id])
+    if family.destroy
+      redirect_to root_path
+    else
+      flash.now[:danger] = "削除できませんでした"
+      render :show
+    end
+  end
+
+  def withdraw
+    family_user = FamilyUser.find_by(family_id: params[:id], user_id: current_user.id)
+    if family_user.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path, danger: "退会できませんでした"
+    end
+  end
+
   private
   def family_info
     @family = Family.find(params[:id])

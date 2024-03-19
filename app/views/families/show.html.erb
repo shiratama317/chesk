@@ -1,6 +1,8 @@
 <%= render "share/header" %>
 
 <main class="d-flex flex-column flex-grow-1 ">
+  <%= render "share/flash_messages" %>
+
   <div class="my-4">
     <h1 class="text-center">
       <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
@@ -15,6 +17,7 @@
         <h5>ファミリー名</h5>
         <p class="text-center my-2"><%= @family.name %></p>
         <%= link_to "変更", edit_family_path(params[:id]), class: "btn link-btn w-100 fw-semibold mx-2" %>
+        <%= link_to "ファミリーを削除する", family_path(params[:id]), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか" }, class: "btn link-btn w-100 fw-semibold mx-2 mt-1" %>
       </div>
       <div class="family-members">
         <h5>メンバー</h5>
