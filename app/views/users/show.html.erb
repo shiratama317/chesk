@@ -8,7 +8,7 @@
   </h1>
   </div>
   <div class="main-index rounded-5 p-4 mx-auto mb-auto">
-    <p class="text-secondary text-end"><%= Date.today.month %>月<%= Date.today.day %>日</p>
+    <p class="text-secondary text-end"><%= Date.today&.strftime("%-m月%-d日") %></p>
     <div class="border rounded-4 p-3 mb-3">
       <h5 class="text-center mb-3"><i class="bi bi-person-circle text-secondary me-1"></i>プロフィール</h5>
       <div class="d-flex">

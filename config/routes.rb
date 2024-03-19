@@ -12,4 +12,7 @@ Rails.application.routes.draw do
     resources :tasks, only: [:new, :create, :index]
     resources :day_tasks, only: [:new, :create, :index, :edit, :update]
   end
+  
+  resources :tasks, only: [:edit, :update]
+  resources :day_tasks, only: [:show]
 end

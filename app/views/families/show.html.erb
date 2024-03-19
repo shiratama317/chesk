@@ -14,7 +14,7 @@
       <div class="family-name mb-3">
         <h5>ファミリー名</h5>
         <p class="text-center my-2"><%= @family.name %></p>
-        <%= link_to "変更", "#", class: "btn link-btn w-100 fw-semibold mx-2" %>
+        <%= link_to "変更", edit_family_path(params[:id]), class: "btn link-btn w-100 fw-semibold mx-2" %>
       </div>
       <div class="family-members">
         <h5>メンバー</h5>

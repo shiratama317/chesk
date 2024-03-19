@@ -1,5 +1,7 @@
 <%= render "share/header" %>
 <main class="d-flex flex-column flex-grow-1 p-4">
+  <%= render "share/flash_messages" %>
+  
   <div class="my-4">
     <h1 class="text-center">
       <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
@@ -18,7 +20,17 @@
             <h5><i class="bi bi-stars text-info"></i><%= category.name %></h5>
             <div class="list-group list-group-horizontal-xl my-2">
                 <% @tasks.where(category_id: category.id).each do |task| %>
-                  <%= link_to task.content, "#", class: "list-group-item" %>
+                  <div class="list-group-item d-flex justify-content-between">
+                    <div><%= task.content %></div>
+                    <div>
+                      <%= link_to edit_task_path(task.id), class: "text-secondary text-decoration-none" do %>
+                        <i class="bi bi-pencil-square"></i>
+                      <% end %>
+                      <%= link_to "#", class: "text-secondary text-decoration-none" do %>
+                        <i class="bi bi-trash"></i>
+                      <% end %>
+                    </div>
+                  </div>
                 <% end %>
             </div>
           <% end %>

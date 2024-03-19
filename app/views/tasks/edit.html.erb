@@ -1,0 +1,36 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 p-4">
+  <%= render "share/flash_messages" %>
+  
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+      タスクの編集
+    </h1>
+  </div>
+  
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
+    <div class="current-user-name"><%= current_user.nickname %></div>
+
+    <div class="new-task-form p-2 border border-success rounded-3">
+      <%= form_with model: @task, local: true do |f| %>
+
+        <label class="fw-semibold my-3 w-100">
+          カテゴリーを選択してください
+          <%= f.collection_select :category_id, Category.all, :id, :name, {}, {class: "form-select"} %>
+        </label>
+
+        <label class="fw-semibold my-3 w-100">
+          タスク内容を入力してください
+          <%= f.text_field :content, class: "form-control" %>
+        </label>
+
+        <p><%= f.submit '変更する', class: "btn link-btn w-100 p-2 fw-semibold" %></p>
+      <% end %>
+      <%= link_to "戻る", new_family_task_path(@family.id), class: "btn link-btn w-100 fw-semibold" %>
+    </div>
+  </div>
+</main>
+
+<%= render "share/footer" %>

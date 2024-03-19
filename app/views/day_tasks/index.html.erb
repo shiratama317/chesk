@@ -1,6 +1,8 @@
 <%= render 'share/header' %>
 
 <main class="d-flex flex-column flex-grow-1 p-4">
+  <%= render "share/flash_messages" %>
+  
   <div class="my-4">
     <h1 class="text-center">
       <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
@@ -11,7 +13,7 @@
   <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
     <div class="d-flex justify-content-between text-secondary">
       <p><%= current_user.nickname %></p>
-      <p><%= Date.today.month %>月<%= Date.today.day %>日</p>
+      <p><%= Date.today&.strftime("%-m月%-d日") %></p>
     </div>
     
     <div class="day-tasks p-2">
