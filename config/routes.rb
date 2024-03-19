@@ -13,6 +13,6 @@ Rails.application.routes.draw do
     resources :day_tasks, only: [:new, :create, :index, :edit, :update]
   end
   
-  resources :tasks, only: [:edit, :update]
+  resources :tasks, only: [:edit, :update, :destroy]
   resources :day_tasks, only: [:show, :destroy]
 end

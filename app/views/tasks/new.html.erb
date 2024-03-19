@@ -19,19 +19,19 @@
           <% if @tasks.where(category_id: category.id).present? %>
             <h5><i class="bi bi-stars text-info"></i><%= category.name %></h5>
             <div class="list-group list-group-horizontal-xl my-2">
-                <% @tasks.where(category_id: category.id).each do |task| %>
-                  <div class="list-group-item d-flex justify-content-between">
-                    <div><%= task.content %></div>
-                    <div>
-                      <%= link_to edit_task_path(task.id), class: "text-secondary text-decoration-none" do %>
-                        <i class="bi bi-pencil-square"></i>
-                      <% end %>
-                      <%= link_to "#", class: "text-secondary text-decoration-none" do %>
-                        <i class="bi bi-trash"></i>
-                      <% end %>
-                    </div>
+              <% @tasks.where(category_id: category.id).each do |task| %>
+                <div class="list-group-item d-flex justify-content-between">
+                  <div class="me-xl-5"><%= task.content %></div>
+                  <div>
+                    <%= link_to edit_task_path(task.id), class: "text-secondary text-decoration-none" do %>
+                      <i class="bi bi-pencil-square"></i>
+                    <% end %>
+                    <%= link_to task_path(task.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか" }, class: "text-secondary text-decoration-none" do %>
+                      <i class="bi bi-trash"></i>
+                    <% end %>
                   </div>
-                <% end %>
+                </div>
+              <% end %>
             </div>
           <% end %>
         <% end %>

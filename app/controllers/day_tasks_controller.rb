@@ -49,8 +49,12 @@ class DayTasksController < ApplicationController
   def destroy
     day_task = DayTask.find(params[:id])
     family = day_task.family
-    day_task.destroy
-    redirect_to family_tasks_path(family.id)
+    if day_task.destroy
+      redirect_to family_tasks_path(family.id)
+    else
+      flash.now[:danger] = "変更できませんでした"
+      render :show
+    end
   end
 
   private

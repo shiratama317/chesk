@@ -32,6 +32,17 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    task = Task.find(params[:id])
+    family = task.family
+    if task.destroy
+      redirect_to new_family_task_path(family.id)
+    else
+      flash.now[:danger] = "削除できませんでした"
+      render :new
+    end
+  end
+
   private
 
   def task_update
