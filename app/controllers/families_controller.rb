@@ -27,9 +27,9 @@ class FamiliesController < ApplicationController
 
   def update
     if @family.update(family_params)
-      redirect_to edit_family_path(params[:id]), success: "ファミリー名を変更しました"
+      redirect_to edit_family_path(params[:id]), success: 'ファミリー名を変更しました'
     else
-      flash.now[:danger] = "変更できませんでした"
+      flash.now[:danger] = '変更できませんでした'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -39,7 +39,7 @@ class FamiliesController < ApplicationController
     if family.destroy
       redirect_to root_path
     else
-      flash.now[:danger] = "削除できませんでした"
+      flash.now[:danger] = '削除できませんでした'
       render :show
     end
   end
@@ -49,11 +49,12 @@ class FamiliesController < ApplicationController
     if family_user.destroy
       redirect_to root_path
     else
-      redirect_to root_path, danger: "退会できませんでした"
+      redirect_to root_path, danger: '退会できませんでした'
     end
   end
 
   private
+
   def family_info
     @family = Family.find(params[:id])
   end

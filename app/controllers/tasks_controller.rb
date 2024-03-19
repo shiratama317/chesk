@@ -25,9 +25,9 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to new_family_task_path(@family.id), success: "変更しました"
+      redirect_to new_family_task_path(@family.id), success: '変更しました'
     else
-      flash.now[:danger] = "変更できませんでした"
+      flash.now[:danger] = '変更できませんでした'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -38,7 +38,7 @@ class TasksController < ApplicationController
     if task.destroy
       redirect_to new_family_task_path(family.id)
     else
-      flash.now[:danger] = "削除できませんでした"
+      flash.now[:danger] = '削除できませんでした'
       render :new
     end
   end

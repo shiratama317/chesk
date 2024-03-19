@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.destroy
       redirect_to root_path
     else
-      redirect_to root_path, danger: "退会できませんでした"
+      redirect_to root_path, danger: '退会できませんでした'
     end
   end
 end

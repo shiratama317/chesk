@@ -12,5 +12,4 @@ class User < ApplicationRecord
   has_many :day_tasks, dependent: :destroy
 
   attr_accessor :family_id
-
 end
