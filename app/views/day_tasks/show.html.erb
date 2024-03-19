@@ -39,7 +39,7 @@
       
       <div class="w-100">
         <%= link_to "変更", edit_family_day_task_path(@family.id, @day_task.id), class: "btn link-btn" %>
-        <%= link_to "削除", "#", class: "btn link-btn" %>
+        <%= link_to "削除", day_task_path(@day_task.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか" }, class: "btn link-btn" %>
       </div>
     </div>
   </div>
