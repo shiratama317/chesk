@@ -1,7 +1,7 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
     <span class="calendar-title">
-      <h3 class="text-center"><%= Date.today.month %>月</h3>
+      <h3 class="text-center"><%= Time.zone.today.month %>月</h3>
       <% if calendar.number_of_weeks > 1 %>
         - <%= calendar.end_week %>
       <% end %>
