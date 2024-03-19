@@ -3,4 +3,13 @@ class UsersController < ApplicationController
     user = User.find(current_user.id)
     @families = user.families
   end
+
+  def destroy
+    @user = User.find(current_user.id)
+    if @user.destroy
+      redirect_to root_path, success: "退会しました"
+    else
+      redirect_to root_path, danger: "退会できませんでした"
+    end
+  end
 end

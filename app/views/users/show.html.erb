@@ -23,7 +23,7 @@
       </div>
 
       <div class="text-center"><%= link_to "登録内容を変更", edit_user_registration_path, class: "btn link-btn w-100 fw-bold" %></div>
-      <div class="text-center"><%= link_to "退会", "#", class: "btn link-btn w-100 fw-bold mt-1" %></div>
+      <div class="text-center"><%= link_to "退会", user_path(current_user.id), data: { turbo_method: :delete, turbo_confirm: "データは復元できません。退会してもよろしいですか。" }, class: "btn link-btn w-100 fw-bold mt-1" %></div>
     </div>
 
     <div class="border rounded-4 p-3">
