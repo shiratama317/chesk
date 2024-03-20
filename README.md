@@ -84,9 +84,9 @@ Things you may want to cover:
 ## Schedulesテーブル
 | column      | Type       | Options                        |
 |-------------|------------|--------------------------------|
-| ivent       | string     | null: false                    |
+| event       | string     | null: false                    |
 | start_time  | datetime   | null: false                    |
-| finish_time | datetime   | null: false                    |
+| end_time    | datetime   | null: false                    |
 | family_id   | references | null: false, foreign_key: true |
 | user_id     | references | null: false, foreign_key: true |
 

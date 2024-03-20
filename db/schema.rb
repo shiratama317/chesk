@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_16_155414) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_20_125925) do
   create_table "day_tasks", charset: "utf8", force: :cascade do |t|
     t.date "start_time", null: false
     t.bigint "task_id", null: false
@@ -37,6 +37,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_16_155414) do
     t.datetime "updated_at", null: false
     t.index ["family_id"], name: "index_family_users_on_family_id"
     t.index ["user_id"], name: "index_family_users_on_user_id"
+  end
+
+  create_table "schedules", charset: "utf8", force: :cascade do |t|
+    t.string "event", null: false
+    t.datetime "start_time", null: false
+    t.datetime "end_time", null: false
+    t.bigint "family_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_schedules_on_family_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "tasks", charset: "utf8", force: :cascade do |t|
@@ -77,5 +89,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_16_155414) do
   add_foreign_key "day_tasks", "users"
   add_foreign_key "family_users", "families"
   add_foreign_key "family_users", "users"
+  add_foreign_key "schedules", "families"
+  add_foreign_key "schedules", "users"
   add_foreign_key "tasks", "families"
 end
