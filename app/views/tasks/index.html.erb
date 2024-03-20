@@ -20,19 +20,9 @@
     </div>
 
     <%= week_calendar events: @day_tasks, class: "table table-bordered" do |date, day_tasks| %>
-      <% if date.saturday? %>
-        <div class="text-primary">
-          <%= date.day %>
-        </div>
-      <% elsif date.sunday? %>
-        <div class="text-danger">
-          <%= date.day %>
-        </div>
-      <% else %>
-        <div>
-          <%= date.day %>
-        </div>
-      <% end %>
+       <div>
+        <%= date.day %>
+      </div>
 
       <table class="table table-hover">
         <% day_tasks.each do |day_task| %>

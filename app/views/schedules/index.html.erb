@@ -1,0 +1,16 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 p-4 p-md-5">
+  <div class="my-2">
+    <h2 class="text-center">
+      <%= image_tag "home-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+      カレンダー
+    </h2>
+  </div>
+  
+  <%= month_calendar do |date| %>
+    <%= date.day %>
+  <% end %>
+</main>
+
+<%= render "share/footer" %>
