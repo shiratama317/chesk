@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       delete 'withdraw'
     end
     
-    resources :schedules, only: [:index]
+    resources :schedules, only: [:index, :new, :create]
     resources :tasks, only: [:new, :create, :index]
     resources :day_tasks, only: [:new, :create, :index, :edit, :update]
   end

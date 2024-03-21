@@ -1,0 +1,67 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 p-4 p-md-5">
+  <%= render "share/flash_messages" %>
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "plus-icon.png",alt: "...", size: '40x40', class:"d-inline-block align-center me-1 mb-1"%>
+      予定の追加
+    </h1>
+  </div>
+
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
+    <div class="d-flex justify-content-between text-secondary">
+      <p><%= current_user.nickname %></p>
+      <p><%= Time.zone.today&.strftime("%-m月%-d日") %></p>
+    </div>
+
+     <div class="new-day-task-form p-2">
+      <%= form_with model: [@family, @schedule], local: true do |f| %>
+        <%= render 'share/error_messages', model: f.object %>
+
+         <label class="fw-semibold my-3 w-100">
+            予定内容<br />
+            <%= f.text_field :event, class: "form-control" %>
+          </label>
+
+          <label class="fw-semibold my-3 w-100">
+            予定開始時刻<br />
+            <%= raw sprintf(
+              f.datetime_select(
+                :start_time,
+                class: "form-select",
+                use_month_numbers: true,
+                start_year: Time.now.year,
+                minute_step: 5,
+                date_separator: '%s',
+                datetime_separator: '%s'),
+                "年", "月", "日") %>
+          </label>
+
+          <label class="fw-semibold my-3 w-100">
+            予定終了時刻<br />
+             <%= raw sprintf(
+              f.datetime_select(
+                :end_time,
+                class: "form-select",
+                use_month_numbers: true,
+                start_year: Time.now.year,
+                minute_step: 5,
+                date_separator: '%s',
+                datetime_separator: '%s'),
+                "年", "月", "日") %>
+          </label>
+
+          <label class="fw-semibold my-3 w-100">
+            誰の予定ですか
+            <%= f.collection_select :user_id, @family.users, :id, :nickname, {}, {class: "form-select"} %>
+          </label>
+
+        <%= f.submit '登録する', class: "btn link-btn w-100 p-2 fw-semibold mb-1" %>
+        <%= link_to '戻る', family_schedules_path(@family.id), class: "btn link-btn w-100 p-2 fw-semibold" %>
+      <% end %>
+    </div>
+  </div>
+</main>
+
+<%= render "share/footer" %>
