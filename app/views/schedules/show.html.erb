@@ -29,7 +29,7 @@
       <p class="mb-4"><%= @schedule.user.nickname %></p>
 
       <div class="d-flex">
-        <div class="w-50 me-1"><%= link_to "変更", "#", class: "btn link-btn w-100" %></div>
+        <div class="w-50 me-1"><%= link_to "変更", edit_schedule_path(@schedule.id), class: "btn link-btn w-100" %></div>
         <div class="w-50"><%= link_to "削除", "#", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか" }, class: "btn link-btn w-100" %></div>
       </div>
     </div>

@@ -24,9 +24,26 @@ class SchedulesController < ApplicationController
     @family = @schedule.family
   end
 
+  def edit
+    @schedule = Schedule.find(params[:id])
+    @family = @schedule.family
+  end
+
+  def update
+    @schedule = Schedule.find(params[:id])
+    @family = @schedule.family
+    if @schedule.update(schedule_params)
+      redirect_to schedule_path(@schedule.id), success: "変更しました"
+    else
+      flash.now[:danger] = "変更できませんでした"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def schedule_params
     params.require(:schedule).permit(:event, :start_time, :end_time, :user_id).merge(family_id: @family.id)
   end
+  
 end
