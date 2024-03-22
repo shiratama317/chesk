@@ -1,0 +1,44 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 p-1 p-md-4">
+  <div class="my-2">
+    <h2 class="text-center">
+      <%= image_tag "calender-icon.png",alt: "...", size: '40x40', class:"d-inline-block rounded-circle align-center me-1 mb-1"%>
+      カレンダー
+    </h2>
+  </div>
+  <%= month_calendar(attribute: :start_time, end_attribute: :end_time, events: @schedules) do |date, schedules| %>
+    <%= date.day %>
+    <div class="month-events text-nowrap overflow-scroll">
+      <% schedules.each do |schedule| %>
+          <%= link_to "#", class: "nav-link text-dark pb-0" do %>
+            <% if schedule.start_time.day == date.day %>
+              <%= schedule.start_time&.strftime("%-H:%M ") %>
+            <% end %>
+            <%= schedule.event %>
+          <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <div class="pb-3 d-block d-md-none">
+    <%= calendar(number_of_days: 7, events: @schedules) do |date, schedules| %>
+      <%= date.day %>
+      <div class="day-events text-nowrap overflow-scroll text-dark">
+        <% schedules.each do |schedule| %>
+          <div>
+          <%= link_to "#", class:"text-decoration-none" do %>
+            <i class="bi bi-info-circle"></i>
+          <% end %>
+          <% if schedule.start_time.day == date.day %>
+            <%= schedule.start_time&.strftime("%-H:%M ") %>
+          <% end %>
+          <%= schedule.event %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</main>
+
+<%= render "share/footer" %>

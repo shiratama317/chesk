@@ -1,33 +1,26 @@
-<div class="simple-calendar">
+<div class="simple-calendar pb-5">
   <div class="calendar-heading">
-    <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
-
-    <nav>
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
-    </nav>
+    <span class="calendar-title me-2"> <%= start_date&.strftime("%Y年 %-m月") %></span>
+    
+      <%= link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view, class: "text-decoration-none text-dark me-1" %>
+      <%= link_to t('simple_calendar.today', default: '今日'), calendar.url_for_today_view, class: "text-decoration-none text-dark me-1" %>
+      <%= link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view, class: "text-decoration-none text-dark" %>
   </div>
-
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
-        <% end %>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% date_range.each_slice(7) do |week| %>
-        <%= content_tag :tr, class: calendar.tr_classes_for(week) do %>
+  <div class="custom-calendar overflow-scroll">
+    <table class="table table-striped">
+      <tbody>
+        <% date_range.each_slice(7) do |week| %>
           <% week.each do |day| %>
-            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
-              <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
+            <%= content_tag :tr, class: calendar.tr_classes_for(week) do %>
+              <td class="custom-td text-center"><%= t('date.abbr_day_names')[day.wday] %></td>
+              <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+                <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-secondary">※<i class="bi bi-info-circle"></i>のクリックでも詳細を閲覧できます</div>
 </div>

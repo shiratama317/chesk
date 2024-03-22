@@ -11,7 +11,7 @@
       <%= link_to "マイタスク", family_day_tasks_path(@family.id), class: "nav-link nav-color" %>
     </div>
     <div class="nav-item nav-list">
-      <a class="nav-link nav-color" href="#">カレンダー</a>
+      <%= link_to "カレンダー", family_schedules_path(@family.id), class: "nav-link nav-color" %>
     </div>
     <div class="nav-item nav-list d-none d-sm-block">
       <%= link_to "プロフィール", root_path, class: "nav-link nav-color" %>

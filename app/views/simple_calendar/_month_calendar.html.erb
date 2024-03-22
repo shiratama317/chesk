@@ -1,19 +1,32 @@
-<div class="simple-calendar">
+<div class="simple-calendar pb-3">
   <div class="calendar-heading">
-    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></time>
+    <h3 class="calendar-title text-center"> <%= start_date&.strftime("%Y年 %-m月") %></h3>
 
-    <nav>
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
-    </nav>
+    <div class="d-flex justify-content-between">
+      <div>
+        <%= link_to t('simple_calendar.previous', default: '<<'), calendar.url_for_previous_view, class: "text-decoration-none text-dark me-1" %>
+        <%= link_to t('simple_calendar.today', default: '今月'), calendar.url_for_today_view, class: "text-decoration-none text-dark me-1" %>
+        <%= link_to t('simple_calendar.next', default: '>>'), calendar.url_for_next_view, class: "text-decoration-none text-dark" %>
+      </div>
+      <div>
+        <%= link_to new_family_schedule_path(params[:family_id]), class: "text-decoration-none text-success" do %>
+          <i class="bi bi-calendar-plus"></i>予定を追加
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <table class="table table-striped">
+  <table class="table table-striped table-bordered table-month">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <% if day.saturday? %>
+            <th class="text-primary"><%= t('date.abbr_day_names')[day.wday] %></th>
+          <% elsif day.sunday? %>
+            <th class="text-danger"><%= t('date.abbr_day_names')[day.wday] %></th>
+          <% else %>
+            <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <% end %>
         <% end %>
       </tr>
     </thead>
@@ -29,5 +42,6 @@
         </tr>
       <% end %>
     </tbody>
+    <caption class="text-secondary ms-1 pt-0">※各予定をクリックすると、詳細を閲覧できます</caption>
   </table>
 </div>
