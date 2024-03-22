@@ -10,6 +10,10 @@
     width: 100%;
   }
 
+   .table-month{
+    table-layout: fixed;
+   }
+
   tr {
     border-collapse: collapse;
   }
@@ -48,15 +52,23 @@
 
   .past { color: gray; }
 
-  .start-date {}
-
   .prev-month {
     background: #DDD;
   }
   .next-month {
     background: #DDD;
   }
-  .current-month {}
 
-  .has-events {}
+  .month-events { font-size: 2vmin; }
+
+  .day-events { font-size: 23px;}
+
+  .custom-td {
+    width: 1%;
+    border-right: 2px solid rgb(221, 221, 221);
+  }
+
+  .custom-calendar {
+    height: 30vh;
+  }
 }

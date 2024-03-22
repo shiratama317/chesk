@@ -1,6 +1,6 @@
-<div class="simple-calendar pb-5">
+<div class="simple-calendar pb-2">
   <div class="calendar-heading">
-    <h3 class="calendar-title text-center"><%= Time.zone.today&.strftime("%Y年 %-m月") %></h3>
+    <h3 class="calendar-title text-center"> <%= start_date&.strftime("%Y年 %-m月") %></h3>
 
     <div class="d-flex justify-content-between">
       <div>
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-  <table class="table table-striped table-bordered">
+  <table class="table table-striped table-bordered table-month">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
@@ -42,5 +42,6 @@
         </tr>
       <% end %>
     </tbody>
+    <caption class="text-secondary ms-1 pt-0">※各予定をクリックすると、詳細を閲覧できます</caption>
   </table>
 </div>

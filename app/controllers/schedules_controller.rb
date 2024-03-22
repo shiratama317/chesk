@@ -1,6 +1,7 @@
 class SchedulesController < ApplicationController
   def index
     @family = Family.find(params[:family_id])
+    @schedules = @family.schedules 
   end
 
   def new
