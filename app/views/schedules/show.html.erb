@@ -1,0 +1,41 @@
+<%= render "share/header" %>
+
+<main class="d-flex flex-column flex-grow-1 p-4 p-md-5">
+  <%= render "share/flash_messages" %>
+  <div class="my-4">
+    <h1 class="text-center">
+      <%= image_tag "calender-icon.png", alt: "...", size: '40x40', class:"d-inline-block rounded-circle align-center me-1 mb-1"%>
+      予定の詳細
+    </h1>
+  </div>
+
+  <div class="main-index rounded-5 p-4 p-sm-5 mx-auto mb-5">
+    <div class="d-flex justify-content-between text-secondary">
+      <p><%= current_user.nickname %></p>
+      <p><%= Time.zone.today&.strftime("%-m月%-d日") %></p>
+    </div>
+
+    <div class="text-center p-4">
+      <h5>予定内容</h5>
+      <p class="mb-4"><%= @schedule.event %></p>
+
+      <h5>予定開始時刻</h5>
+      <p class="mb-4"><%= @schedule.start_time&.strftime("%Y年 %-m月 %-d日 %H:%M") %></p>
+
+      <h5>予定終了時刻</h5>
+      <p class="mb-4"><%= @schedule.end_time&.strftime("%Y年 %-m月 %-d日 %H:%M") %></p>
+
+      <h5>誰の予定か</h5>
+      <p class="mb-4"><%= @schedule.user.nickname %></p>
+
+      <div class="d-flex">
+        <div class="w-50 me-1"><%= link_to "変更", "#", class: "btn link-btn w-100" %></div>
+        <div class="w-50"><%= link_to "削除", "#", data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか" }, class: "btn link-btn w-100" %></div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<%= render "share/footer" %>
