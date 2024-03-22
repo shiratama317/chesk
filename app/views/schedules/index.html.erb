@@ -11,7 +11,7 @@
     <%= date.day %>
     <div class="month-events text-nowrap overflow-scroll">
       <% schedules.each do |schedule| %>
-          <%= link_to "#", class: "nav-link text-dark pb-0" do %>
+          <%= link_to schedule_path(schedule.id), class: "nav-link text-dark pb-0" do %>
             <% if schedule.start_time.day == date.day %>
               <%= schedule.start_time&.strftime("%-H:%M ") %>
             <% end %>
@@ -27,7 +27,7 @@
       <div class="day-events text-nowrap overflow-scroll text-dark">
         <% schedules.each do |schedule| %>
           <div>
-          <%= link_to "#", class:"text-decoration-none" do %>
+          <%= link_to schedule_path(schedule.id), class:"text-decoration-none" do %>
             <i class="bi bi-info-circle"></i>
           <% end %>
           <% if schedule.start_time.day == date.day %>

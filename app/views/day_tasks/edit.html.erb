@@ -17,28 +17,27 @@
 
     <div class="new-day-task-form p-2">
       <%= form_with model: [@family, @day_task], local: true do |f| %>
+        <label class="fw-semibold my-3 w-100">
+          実行日<br />
+          <%= f.date_field :start_time, min: Time.zone.now, class: "border" %>
+        </label>
 
-          <label class="fw-semibold my-3 w-100">
-            実行日<br />
-            <%= f.date_field :start_time, min: Time.zone.now, class: "border" %>
-          </label>
+        <label class="fw-semibold my-3 w-100">
+          タスク内容
+          <%= f.collection_select :task_id, @family.tasks, :id, :content, {}, {class: "form-select"} %>
+        </label>
 
-          <label class="fw-semibold my-3 w-100">
-            タスク内容
-            <%= f.collection_select :task_id, @family.tasks, :id, :content, {}, {class: "form-select"} %>
-          </label>
+        <label class="fw-semibold my-3 w-100">
+          担当者
+          <%= f.collection_select :user_id, @family.users, :id, :nickname, {}, {class: "form-select"} %>
+        </label>
 
-          <label class="fw-semibold my-3 w-100">
-            担当者
-            <%= f.collection_select :user_id, @family.users, :id, :nickname, {}, {class: "form-select"} %>
-          </label>
+        <label class="fw-semibold my-3 w-100">
+          <%= f.check_box :completed  %>
+          完了状況
+        </label>
 
-          <label class="fw-semibold my-3 w-100">
-            <%= f.check_box :completed  %>
-            完了状況
-          </label>
-
-          <%= f.hidden_field :origin, value: "edit" %>
+        <%= f.hidden_field :origin, value: "edit" %>
 
         <p><%= f.submit '変更する', class: "btn link-btn w-100 p-2 fw-semibold" %></p>
       <% end %>
