@@ -47,11 +47,17 @@ class SchedulesController < ApplicationController
 
   def schedule_new
     @family = Family.find(params[:family_id])
+    unless current_user.families.include?(@family)
+      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
+    end
   end
 
   def schedule_update
     @schedule = Schedule.find(params[:id])
     @family = @schedule.family
+    unless current_user.families.include?(@family)
+      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
+    end
   end
 
   def schedule_params

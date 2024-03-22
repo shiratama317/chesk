@@ -1,5 +1,5 @@
 class FamiliesController < ApplicationController
-  before_action :family_info, except: [:new, :create]
+  before_action :check_family, except: [:new, :create]
 
   def top
   end
@@ -55,8 +55,11 @@ class FamiliesController < ApplicationController
 
   private
 
-  def family_info
+  def check_family
     @family = Family.find(params[:id])
+    unless current_user.families.include?(@family)
+      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
+    end
   end
 
   def family_params

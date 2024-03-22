@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :task_index, only: [:new, :create]
-  before_action :task_update, only: [:edit, :update]
+  before_action :task_update, only: [:edit, :update, :destroy]
 
   def new
     @task = Task.new
@@ -17,6 +17,9 @@ class TasksController < ApplicationController
 
   def index
     @family = Family.find(params[:family_id])
+    unless current_user.families.include?(@family)
+      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
+    end
     @day_tasks = @family.day_tasks
   end
 
@@ -33,13 +36,11 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    task = Task.find(params[:id])
-    family = task.family
-    if task.destroy
-      redirect_to new_family_task_path(family.id)
+    if @task.destroy
+      redirect_to new_family_task_path(@family.id)
     else
       flash.now[:danger] = '削除できませんでした'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -48,10 +49,16 @@ class TasksController < ApplicationController
   def task_update
     @task = Task.find(params[:id])
     @family = @task.family
+    unless current_user.families.include?(@family)
+      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
+    end
   end
 
   def task_index
     @family = Family.find(params[:family_id])
+    unless current_user.families.include?(@family)
+      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
+    end
     @tasks = @family.tasks
     @categories = Category.all
   end
