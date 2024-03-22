@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources :day_tasks, only: [:new, :create, :index, :edit, :update]
   end
 
-  resources :schedules, only: [:show, :edit, :update]
+  resources :schedules, only: [:show, :edit, :update, :destroy]
   resources :users, only: :destroy
   resources :tasks, only: [:edit, :update, :destroy]
   resources :day_tasks, only: [:show, :destroy]
