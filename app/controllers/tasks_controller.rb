@@ -17,9 +17,7 @@ class TasksController < ApplicationController
 
   def index
     @family = Family.find(params[:family_id])
-    unless current_user.families.include?(@family)
-      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
-    end
+    redirect_to root_path, danger: 'あなたは、このファミリーに所属していないため、アクセスできません。' unless current_user.families.include?(@family)
     @day_tasks = @family.day_tasks
   end
 
@@ -49,16 +47,14 @@ class TasksController < ApplicationController
   def task_update
     @task = Task.find(params[:id])
     @family = @task.family
-    unless current_user.families.include?(@family)
-      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
-    end
+    return if current_user.families.include?(@family)
+
+    redirect_to root_path, danger: 'あなたは、このファミリーに所属していないため、アクセスできません。'
   end
 
   def task_index
     @family = Family.find(params[:family_id])
-    unless current_user.families.include?(@family)
-      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
-    end
+    redirect_to root_path, danger: 'あなたは、このファミリーに所属していないため、アクセスできません。' unless current_user.families.include?(@family)
     @tasks = @family.tasks
     @categories = Category.all
   end

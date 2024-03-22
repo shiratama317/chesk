@@ -17,18 +17,14 @@ class DayTasksController < ApplicationController
 
   def index
     @family = Family.find(params[:family_id])
-    unless current_user.families.include?(@family)
-      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
-    end
+    redirect_to root_path, danger: 'あなたは、このファミリーに所属していないため、アクセスできません。' unless current_user.families.include?(@family)
     @day_tasks = DayTask.where(start_time: Date.today, user_id: current_user.id, family_id: @family.id)
   end
 
   def show
     @day_task = DayTask.find(params[:id])
     @family = @day_task.family
-    unless current_user.families.include?(@family)
-      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
-    end
+    redirect_to root_path, danger: 'あなたは、このファミリーに所属していないため、アクセスできません。' unless current_user.families.include?(@family)
     @task = @day_task.task
     @category = @task.category
   end
@@ -68,16 +64,14 @@ class DayTasksController < ApplicationController
   def day_task_update
     @day_task = DayTask.find(params[:id])
     @family = Family.find(params[:family_id])
-    unless current_user.families.include?(@family)
-      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
-    end
+    return if current_user.families.include?(@family)
+
+    redirect_to root_path, danger: 'あなたは、このファミリーに所属していないため、アクセスできません。'
   end
 
   def day_task_new
     @family = Family.find(params[:family_id])
-    unless current_user.families.include?(@family)
-      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
-    end
+    redirect_to root_path, danger: 'あなたは、このファミリーに所属していないため、アクセスできません。' unless current_user.families.include?(@family)
     @tasks = @family.tasks
     @users = @family.users
   end

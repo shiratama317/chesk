@@ -57,9 +57,9 @@ class FamiliesController < ApplicationController
 
   def check_family
     @family = Family.find(params[:id])
-    unless current_user.families.include?(@family)
-      redirect_to root_path, danger: "あなたは、このファミリーに所属していないため、アクセスできません。"
-    end
+    return if current_user.families.include?(@family)
+
+    redirect_to root_path, danger: 'あなたは、このファミリーに所属していないため、アクセスできません。'
   end
 
   def family_params

@@ -30,7 +30,7 @@ RSpec.describe Schedule, type: :model do
       it 'end_timeがstart_time以前では登録できない' do
         @schedule.end_time = Faker::Time.between(from: @schedule.start_time - 5, to: @schedule.start_time)
         @schedule.valid?
-        expect(@schedule.errors.full_messages).to include("End time は開始時刻以降で設定してください")
+        expect(@schedule.errors.full_messages).to include('End time は開始時刻以降で設定してください')
       end
       it 'user_idが紐づいていなければ、登録できない' do
         @schedule.user = nil
