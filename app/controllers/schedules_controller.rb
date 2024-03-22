@@ -15,7 +15,7 @@ class SchedulesController < ApplicationController
     if @schedule.save
       redirect_to new_family_schedule_path(@family.id), success: "登録しました"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
