@@ -97,6 +97,33 @@ https://chesk.onrender.com
 要件定義シート
 https://docs.google.com/spreadsheets/d/172GIjkHzgXA4Q6JrC_LfvxmtmP2cnB08AI7ELuAE05M/edit?usp=sharing
 
+# 実装した機能についての画像やGIF
+- ログインから各ファミリーのホーム画面への遷移
+
+<a href="https://gyazo.com/61461bd4c08083a1f96b3d103a552893"><img src="https://i.gyazo.com/61461bd4c08083a1f96b3d103a552893.gif" alt="Image from Gyazo" width="400"/></a>
+
+- ファミリーへの招待（既存ユーザー）
+
+<a href="https://gyazo.com/aa2e654b96358bde8b6fcc0f8687c825"><img src="https://i.gyazo.com/aa2e654b96358bde8b6fcc0f8687c825.gif" alt="Image from Gyazo" width="400"/></a>
+
+- タスクの新規作成
+
+<a href="https://gyazo.com/917a610aab09568006218a7abbad497d"><img src="https://i.gyazo.com/917a610aab09568006218a7abbad497d.gif" alt="Image from Gyazo" width="400" height="400"/></a>
+
+
+- 1日のタスクの新規作成
+
+<a href="https://gyazo.com/800a4a3a48d1332fb80147aca81ff1ac"><img src="https://i.gyazo.com/800a4a3a48d1332fb80147aca81ff1ac.gif" alt="Image from Gyazo" width="400"/></a>
+
+- マイタスクのチェック機能
+
+<a href="https://gyazo.com/5c1f2955a3f01ce263c5c938b4458bbf"><img src="https://i.gyazo.com/5c1f2955a3f01ce263c5c938b4458bbf.gif" alt="Image from Gyazo" width="400"/></a>
+
+- スケジュールの追加
+
+<a href="https://gyazo.com/e2a88b2310413b897530ebd5e692bdd0"><img src="https://i.gyazo.com/e2a88b2310413b897530ebd5e692bdd0.gif" alt="Image from Gyazo" width="400" height="400"/></a>
+
+
 # 実装予定の機能
 現在、コメント機能の実装を検討中。
 また、カレンダーに祝日の設定を行いたいと考えている。
